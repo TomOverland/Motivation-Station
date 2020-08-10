@@ -1,6 +1,6 @@
 # Project-One
 
-Application Requirements
+## Application Requirements
 
 
 Must use at least two server-side APIs
@@ -28,7 +28,7 @@ Must be deployed to GitHub Pages
 
 
 
-Presentation Requirements
+## Presentation Requirements
 Use this project presentation template to address the following:
 
 
@@ -51,7 +51,7 @@ Links to the deployed application and the GitHub repository
 
 
 
-Grading Metrics
+## Grading Metrics
 
 
 
