@@ -5,3 +5,9 @@
 .hide {
   display: none;
 }
+
+/* need a height value for the map element or it wont display, might be 
+better if it is 100% */
+#map {
+  height: 25%;
+}
