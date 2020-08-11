@@ -1,10 +1,11 @@
 
 // ------------------- Google Maps ------------------
-//initialize and add the map
-let map;
 //use mapLat & mapLng to define the search locations from the national park response
 let mapLat;
 let mapLng;
+
+//initialize and add the map
+let map;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -21,14 +22,9 @@ const stateArr = "CA";
 const parksAPI = 'Quk7HRe6sAdTvcwxZOA6wxEoqK4orHEXoYBKts9n';
 let parksQueryURL = 'https://api.nps.gov/api/v1/parks?stateCode=' + stateArr + '&api_key=' + parksAPI;
 // defining stateArr in global scope as an empty string, 
-// as it will later be reassigned within the function watchForm
+// as it will later be reassigned within the event delegation function
 // and used in the .ajax query
 
-
-// define which parks we are searching for...
-// function formatQueryParams(params) {
-//     const queryItems = 
-// }
 
 //ajax call to obtain national park data
 $.ajax({
@@ -37,17 +33,18 @@ $.ajax({
   }).then(function (response) {
     console.log(response);
     console.log(parksQueryURL);
+    let results = response.list
     //each new search will clear the previous, we will need to assign a current id
     // $("#current").empty();
   
 });
 
 //--------------------- event delegation --------------------------
-function watchForm() {
-    $('search-btn').on('click', function() {
-        //stops form from "submitting"
-        event.preventDefault();
-        stateArr = $('city-search').val();
-          
-    })
-}
+$('search-btn').on('click', function() {
+    //stops form from "submitting"
+    event.preventDefault();
+    stateArr = $('city-search').text.val();
+    //test console.log
+    console.log(stateArr);
+        
+})
