@@ -12,4 +12,16 @@ function initMap() {
 
 // -------------------National Park Service API ----------------
 
-let parksAPI = Quk7HRe6sAdTvcwxZOA6wxEoqK4orHEXoYBKts9n;
+let parksAPI = 'Quk7HRe6sAdTvcwxZOA6wxEoqK4orHEXoYBKts9n';
+let parksQueryURL = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=' + parksAPI;
+
+$.ajax({
+    url: parksQueryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    console.log(parksQueryURL);
+    //each new search will clear the previous
+    $("#current").empty();
+  
+});
