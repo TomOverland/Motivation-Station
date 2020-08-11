@@ -16,12 +16,14 @@ function initMap() {
 }
 
 // ------------------- National Park Service API ----------------
+const stateArr = "CA";
+
 const parksAPI = 'Quk7HRe6sAdTvcwxZOA6wxEoqK4orHEXoYBKts9n';
 let parksQueryURL = 'https://api.nps.gov/api/v1/parks?stateCode=' + stateArr + '&api_key=' + parksAPI;
 // defining stateArr in global scope as an empty string, 
 // as it will later be reassigned within the function watchForm
 // and used in the .ajax query
-const stateArr = "";
+
 
 // define which parks we are searching for...
 // function formatQueryParams(params) {
@@ -35,17 +37,17 @@ $.ajax({
   }).then(function (response) {
     console.log(response);
     console.log(parksQueryURL);
-    //each new search will clear the previous
-    $("#current").empty();
+    //each new search will clear the previous, we will need to assign a current id
+    // $("#current").empty();
   
 });
 
 //--------------------- event delegation --------------------------
 function watchForm() {
-    $('search-btn').on('submit', function() {
+    $('search-btn').on('click', function() {
         //stops form from "submitting"
         event.preventDefault();
         stateArr = $('city-search').val();
-        
+          
     })
 }
