@@ -1,20 +1,34 @@
 
-// -------------------Google Maps------------------
+// ------------------- Google Maps ------------------
 //initialize and add the map
 let map;
+//use mapLat & mapLng to define the search locations from the national park response
+let mapLat;
+let mapLng;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
+    //change lat & lng - same note as line 5
+    //used placeholder lat lng from yellowstone ntl park
+    center: { lat: 44.4280, lng: -110.5885 },
     zoom: 8
   });
 }
 
-// -------------------National Park Service API ----------------
+// ------------------- National Park Service API ----------------
+const parksAPI = 'Quk7HRe6sAdTvcwxZOA6wxEoqK4orHEXoYBKts9n';
+let parksQueryURL = 'https://api.nps.gov/api/v1/parks?stateCode=' + stateArr + '&api_key=' + parksAPI;
+// defining stateArr in global scope as an empty string, 
+// as it will later be reassigned within the function watchForm
+// and used in the .ajax query
+const stateArr = "";
 
-let parksAPI = 'Quk7HRe6sAdTvcwxZOA6wxEoqK4orHEXoYBKts9n';
-let parksQueryURL = 'https://developer.nps.gov/api/v1/parks?parkCode=acad&api_key=' + parksAPI;
+// define which parks we are searching for...
+// function formatQueryParams(params) {
+//     const queryItems = 
+// }
 
+//ajax call to obtain national park data
 $.ajax({
     url: parksQueryURL,
     method: "GET",
@@ -25,3 +39,13 @@ $.ajax({
     $("#current").empty();
   
 });
+
+//--------------------- event delegation --------------------------
+function watchForm() {
+    $('search-btn').on('submit', function() {
+        //stops form from "submitting"
+        event.preventDefault();
+        stateArr = $('city-search').val();
+        
+    })
+}
