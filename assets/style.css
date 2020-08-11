@@ -1,3 +1,7 @@
-body {
-  max-width: 0em;
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }

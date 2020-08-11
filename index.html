@@ -3,9 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>National Park Locator</title>
   </head>
   <body>
-    <div>Test</div>
+    <!--"first page"-->
+    <div class="start-container">
+      <!--This would start as "show" class-->
+      <!--Search Input and Button-->
+      <form>
+        <input id="city-search" placeholder="City" />
+      </form>
+      <button id="search-btn">Search</button>
+    </div>
+    <!--"Second Page"-->
+    <div id="result-list">
+      <!--This container holds the list-->
+      <!--this would be "hidden" at start-->
+      <div id="national-park">
+        <!--Content generates here-->
+        <!--Take up 2/3's of page-->
+        <!--float left-->
+      </div>
+      <div id="map">
+        <!--right float-->
+        <!--maps generate here-->
+      </div>
+    </div>
   </body>
 </html>
