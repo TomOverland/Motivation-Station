@@ -1,5 +1,20 @@
-// -------- Random Quotes from QuoteGarden API ---------
+// -------- Random Quotefals from QuoteGarden API ---------
 let quoteGardenURL = "https://quote-garden.herokuapp.com/api/v2/quotes/random";
+const APIkeyNASA = "0bKKI1WFHiOqeZzI8X3DEywObteFpr21E3YaQmEA";
+let nasaURL = "https://api.nasa.gov/planetary/apod?api_key=" + APIkeyNASA;
+
+// -------- NASA Image of the Day --------
+$.ajax({
+  url: nasaURL,
+  method: "GET",
+}).then(function (response) {
+  console.log(response);
+  console.log(nasaURL);
+  let nasaImg = response.url;
+  console.log(nasaImg);
+
+  $("#nasa-img").html("<img src=" + nasaImg + "></img>");
+});
 
 // -------- Event Delegation -------
 
