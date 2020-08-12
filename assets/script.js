@@ -12,13 +12,13 @@ $.ajax({
   console.log(nasaURL);
   let nasaImg = response.url;
   console.log(nasaImg);
-
   $("#nasa-img").html("<img src=" + nasaImg + "></img>");
 });
 
 // -------- Event Delegation -------
 
 $("#btn").on("click", function (event) {
+  // ----- Random Quotes -----
   $.ajax({
     url: quoteGardenURL,
     method: "GET",
@@ -28,7 +28,6 @@ $("#btn").on("click", function (event) {
     let quoteAuthor = $("<h6>").text(response.quote.quoteAuthor);
     let quoteText = $("<h4>").text(response.quote.quoteText);
     let newDiv = $("<div>");
-
     newDiv.append(quoteText, quoteAuthor);
     $("#quote").html(newDiv);
   });
