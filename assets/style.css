@@ -1,6 +1,0 @@
-/* need a width/height value for the map element to display */
-#map {
-  width: 100%;
-  height: 400px;
-  background-color: grey;
-}
