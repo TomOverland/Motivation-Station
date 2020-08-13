@@ -18,6 +18,7 @@ $.ajax({
   $("#harvard-img").html("<img src=" + harvardImg + "></img>");
 });
 
+
 // -------- Event Delegation -------
 $("#btn").on("click", function (event) {
   event.preventDefault();
@@ -28,20 +29,48 @@ $("#btn").on("click", function (event) {
   }).then(function (response) {
     console.log(response);
     console.log(quoteGardenURL);
-    let quoteAuthor = $("<h6>").text(response.quote.quoteAuthor);
-    let quoteText = $("<h4>").text(response.quote.quoteText);
+    let quoteAuthor = response.quote.quoteAuthor;
+    let quoteAuthorEl = $("<h6 id='author'>").text(quoteAuthor);
+    let quoteText = response.quote.quoteText;
+    let quoteTextEl =$("<h4>").text(quoteText);
     let newDiv = $("<div>");
-    newDiv.append(quoteText, quoteAuthor);
+    newDiv.append(quoteTextEl, quoteAuthorEl);
     $("#quote").html(newDiv);
+    //save each quote to local storage, and call the "get" function when the save btn is
+    //pressed, causing the saved item to be created on the saved page
+    let savedQuoteArr = {
+      quotetext: quoteText, 
+      author: quoteAuthor
+    };
+    localStorage.setItem("savedQuote", JSON.stringify(savedQuoteArr));
   });
 });
+
+
 
 //This doesn't currently save.  Needs to be fixed.
 $("#save-btn").on("click", function (event) {
   event.preventDefault();
-  localStorage.setItem("savedQuote", response.quote.quoteText);
+  function saveQuotes() {
+    getSavedArr = JSON.parse(localStorage.getItem("savedQuote"));
+    listQuote = getSavedArr.quotetext;
+    listQuoteEl = $("<p>").text(listQuote);
+    listAuthor = getSavedArr.author;
+    listAuthorEl = $("<p>").text(listAuthor);
+    newListItem = $("<li>")
+    newListItem.append(listQuote, listAuthor)
+    $("#list").html(newListItem);
+  };
+  saveQuotes();
 });
 
-//Add the "get" function and have it append quotes and authors to an ul and li
 
-//add twitter tweet functions to the ul.
+
+//Add items to list
+//list.innerHTML += '<li>' + variable.value +'<li>';
+
+//clear button
+//$('#reset-btn').on("click", function(event) {
+//   event.preventDefault();
+//   ListeningStateChangedEvent.value = '';
+// })
