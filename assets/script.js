@@ -1,24 +1,27 @@
-// -------- Random Quotefals from QuoteGarden API ---------
+// -------- Global Variables ---------
 let quoteGardenURL = "https://quote-garden.herokuapp.com/api/v2/quotes/random";
-const APIkeyNASA = "0bKKI1WFHiOqeZzI8X3DEywObteFpr21E3YaQmEA";
-let nasaURL = "https://api.nasa.gov/planetary/apod?api_key=" + APIkeyNASA;
+let imageID = Math.floor(Math.random() * 20 + 100000);
+let harvardURL =
+  "https://api.harvardartmuseums.org/image/" +
+  imageID +
+  "?apikey=86ed3a95-7559-4fe1-be65-a8316de3c126";
 
-// -------- NASA Image of the Day --------
+// ------- Page Image from Harvard Museum API ------
 $.ajax({
-  url: nasaURL,
+  url: harvardURL,
   method: "GET",
 }).then(function (response) {
   console.log(response);
-  console.log(nasaURL);
-  let nasaImg = response.url;
-  console.log(nasaImg);
-  $("#nasa-img").html("<img src=" + nasaImg + "></img>");
+  console.log(harvardURL);
+  let harvardImg = response.baseimageurl;
+  console.log(harvardImg);
+  $("#harvard-img").html("<img src=" + harvardImg + "></img>");
 });
 
 // -------- Event Delegation -------
-
 $("#btn").on("click", function (event) {
-  // ----- Random Quotes -----
+  event.preventDefault();
+  // ----- Random Quotes from QuoteGarden API -----
   $.ajax({
     url: quoteGardenURL,
     method: "GET",
@@ -32,3 +35,13 @@ $("#btn").on("click", function (event) {
     $("#quote").html(newDiv);
   });
 });
+
+//This doesn't currently save.  Needs to be fixed.
+$("#save-btn").on("click", function (event) {
+  event.preventDefault();
+  localStorage.setItem("savedQuote", response.quote.quoteText);
+});
+
+//Add the "get" function and have it append quotes and authors to an ul and li
+
+//add twitter tweet functions to the ul.
