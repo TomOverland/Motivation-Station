@@ -67,5 +67,9 @@ $("#save-btn").on("click", function (event) {
 //clear button
 //$('#reset-btn').on("click", function(event) {
 //   event.preventDefault();
+<<<<<<< HEAD
 //   list.value = '';
+=======
+//   ListeningStateChangedEvent.value = '';
+>>>>>>> d18cb905f9232fd6cdf4d6842b6e638e32c4a050
 // })
