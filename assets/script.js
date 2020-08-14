@@ -28,6 +28,7 @@ $("#btn").on("click", function (event) {
   }).then(function (response) {
     console.log(response);
     console.log(quoteGardenURL);
+    //these variables allow us to save responses to local storage
     let quoteAuthor = response.quote.quoteAuthor;
     let quoteAuthorEl = $("<h6 id='author'>").text(quoteAuthor);
     let quoteText = response.quote.quoteText;
@@ -35,8 +36,7 @@ $("#btn").on("click", function (event) {
     let newDiv = $("<div>");
     newDiv.append(quoteTextEl, quoteAuthorEl);
     $("#quote").html(newDiv);
-    //save each quote to local storage, and call the "get" function when the save btn is
-    //pressed, causing the saved item to be created on the saved page
+    //saving the quotes to local storage as an object
     let savedQuoteArr = {
       quotetext: quoteText,
       author: quoteAuthor,
@@ -45,31 +45,27 @@ $("#btn").on("click", function (event) {
   });
 });
 
-//This doesn't currently save.  Needs to be fixed.
+//This creates list items in a "saved quotes" div
 $("#save-btn").on("click", function (event) {
   event.preventDefault();
+  //this function allows us to click the "save" button, and have the saved quote be appended to a list
   function saveQuotes() {
     getSavedArr = JSON.parse(localStorage.getItem("savedQuote"));
     listQuote = getSavedArr.quotetext;
     listQuoteEl = $("<p>").text(listQuote);
-    listAuthor = getSavedArr.author;
+    lineBreak = $("<br>");
+    listAuthor = "-" + getSavedArr.author;
     listAuthorEl = $("<p>").text(listAuthor);
+    horizontalRule = $("<hr>");
     newListItem = $("<li>");
-    newListItem.append(listQuote, listAuthor);
-    $("#list").html(newListItem);
+    newListItem.append(listQuote, lineBreak, listAuthor, horizontalRule);
+    $("#list").append(newListItem);
   }
   saveQuotes();
 });
 
-//Add items to list
-//list.innerHTML += '<li>' + variable.value +'<li>';
-
 //clear button
-//$('#reset-btn').on("click", function(event) {
-//   event.preventDefault();
-<<<<<<< HEAD
-//   list.value = '';
-=======
-//   ListeningStateChangedEvent.value = '';
->>>>>>> d18cb905f9232fd6cdf4d6842b6e638e32c4a050
-// })
+$("#reset-btn").on("click", function (event) {
+  event.preventDefault();
+  $("#list").empty();
+});
