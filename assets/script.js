@@ -51,7 +51,7 @@ $(document).ready(function () {
   // ------------------- ADD TO FAVORITES BUTTON -----------------------
   $("#save-btn").on("click", function (event) {
     event.preventDefault();
-    //this function allows us to click the "save" button, and have the saved quote be appended to a list
+    //this function allows us to click the "save" button, and have the saved quote be appended to a list, along with a link to post to twitter
     function saveQuotes() {
       getSavedArr = JSON.parse(localStorage.getItem("savedQuote"));
       listQuote = getSavedArr.quotetext;
@@ -60,69 +60,49 @@ $(document).ready(function () {
       listAuthor = "-" + getSavedArr.author;
       listAuthorEl = $("<p>").text(listAuthor);
       horizontalRule = $("<hr>");
-      blockQuote = $("<blockquote>");
-      newListItem = $("<li id='quote-content'>");
+      // --------------TWITTER <a> button----------------
+      const q = $(quote);
+      const currentPageUrl = window.location.href;
+      let clickToTweetBtn = $("<a>");
+      let tweetableUrl = makeTweetableUrl(q.text(), currentPageUrl);
+      clickToTweetBtn.text("Click to Tweet");
+      clickToTweetBtn.attr("href", tweetableUrl);
+      clickToTweetBtn.on("click", onClickToTweet);
+      // --------------END TWITTER <a> button-------------
+      newListItem = $("<li>");
       newListItem.append(
-        blockQuote,
         listQuote,
         lineBreak,
         listAuthor,
+        lineBreak,
+        clickToTweetBtn,
         horizontalRule
       );
-      $("#list").append(newListItem);
+      $("#list").prepend(newListItem);
     }
     saveQuotes();
-
-    //----------------  TWITTER --------------------------
-
-    // Get all quote elements inside the article
-    const articleBody = $("#quote-content");
-    const quotes = articleBody.find("quote, blockquote");
-    let tweetableUrl = "";
-    let clickToTweetBtn = null;
-    // Get a url of the current page
-    const currentPageUrl = window.location.href;
-
-    quotes.each(function (index, quote) {
-      const q = $(quote);
-      // Create a tweetable url
-      tweetableUrl = makeTweetableUrl(q.text(), currentPageUrl);
-      // Create a 'click to tweet' button with appropriate attributes
-      clickToTweetBtn = $("<a>");
-      clickToTweetBtn.text("Click to Tweet");
-
-      clickToTweetBtn.attr("href", tweetableUrl);
-      clickToTweetBtn.on("click", onClickToTweet);
-
-      // Add button to every blockquote
-      q.append(clickToTweetBtn);
-    });
-
-    function makeTweetableUrl(text, pageUrl) {
-      const tweetableText =
-        "https://twitter.com/intent/tweet?url=" +
-        //pageUrl +
-        "&text=" +
-        tweet;
-      //encodeURIComponent(text);
-
-      return tweetableText;
-    }
-
-    function onClickToTweet(e) {
-      e.preventDefault();
-
-      window.open(
-        e.target.getAttribute("href"),
-        "twitterwindow",
-        "height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
-      );
-    }
   });
 
-  //---------------- RESET BUTTON ---------------------------
-  $("#reset-btn").on("click", function (event) {
-    event.preventDefault();
-    $("#list").empty();
-  });
+  // ----------Create Twitter Link-----------
+  function makeTweetableUrl() {
+    const tweetableText = "https://twitter.com/intent/tweet?text=" + tweet;
+    return tweetableText;
+  }
+
+  //----------Creates Twitter Popup Window----------
+  function onClickToTweet(e) {
+    e.preventDefault();
+
+    window.open(
+      e.target.getAttribute("href"),
+      "twitterwindow",
+      "height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
+    );
+  }
+});
+
+//---------------- RESET BUTTON ---------------------------
+$("#reset-btn").on("click", function (event) {
+  event.preventDefault();
+  $("#list").empty();
 });
