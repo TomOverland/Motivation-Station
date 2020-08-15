@@ -1,21 +1,26 @@
 # Motivation-Station
+
 This website serves as a landing page for social media influencers, who want an application that will create inspiring content and allow them to share it directly to their social media pages.
 
 ## Live Site
+
 This is a link to the live site: https://tomoverland.github.io/Motivation-Station/
 
-## Demonstration of Application  
+## Demonstration of Application
+
 ![demonstration of application](gif-link-to-be-added)
 
-## Description  
+## Description
+
 When this website is loaded, the user is greeted with a random image from the Harvard Museum of Art.  
 The user is then prompted to click a button, that will generate a random quote from the QuoteGarden API.  
 If the user likes the quote, they are able to save it to a list.  
 The user can then "tweet" any saved quotes on that list directly to their twitter feed using the Twitter API.
 
 ## Built With
+
 HTML  
-JavaScript    
+JavaScript  
 Foundation - Framework used to structure our HTML.  
 CSS - Used in tandem with Foundation to style our project
 jQuery - Used to traverse the DOM and handle events.  
@@ -24,15 +29,18 @@ Harvard Museum of Art API - Used to generate random inspiring pictures.
 Twitter API - Used to allow users to tweet their content directly to their twitter feeds
 
 ## Installation
+
 If all files are kept in a single folder a web browser should be able to run the project.  
-You will need an internet connection.  
+You will need an internet connection.
 
 ## Credits
+
 We created this code based on the homework prompt created by Trilogy Education Services.
 
 ## Contributing
+
 Tom Overland & Grant Scriver - JavaScript
-Ruth - UI & Design
+Ruth Vang - UI & Design
 Cyrus Hanson & Liban Esse - HTML / Structuring the Page
 
 ## License
