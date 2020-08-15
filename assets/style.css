@@ -61,3 +61,6 @@
   color: #fefefe;
   font-weight: bold;
 }
+.btn-group{
+  align-items: center;
+}

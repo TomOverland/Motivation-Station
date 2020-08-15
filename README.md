@@ -1,81 +1,36 @@
 # Project-One
 
-## Application Requirements
+# Project-One
+#Motivation Station
 
+Welcome to the Motivation Stationn where you are able to get all the motivation you need to get you up and going. 
 
-Must use at least two server-side APIs
+# Live site
+Link to website- <a href="#">
 
+## Description 
 
-Must use a CSS framework other than Bootstrap
+This website will let you generate randonm quotes. Once on the site you are represented with a click option to generata a quote. Once the quoute is generated you will see it display on the screen. You than will have the option to save your quotes. After they are saved you will see the quotes appear on the bottom of the page as a list. Another function we have here is  the click option to have your quote posted on twitter. 
 
+# Built With
 
-Must be interactive (i.e: accept and respond to user input)
+HTML  
+JavaScript 
+Foundation - Used to structure the HTML.  
+jQuery 
 
+# How to
+Once on the site click the new quote button
+To save the quote press "save quote" button
+To post the quote on twitter. you will need to click the twitter button and it will open a new page on twitter. 
+To clear the saved quotes click the reset button.
 
-Use at least one new third-party API
+# Credits
+This page is created as a group project for the Bootcamp.
 
-
-Must have a polished UI
-
-
-Must meet good quality coding standards
-
-
-Does not use alerts, confirms or prompts (look into modals)
-
-
-Must be deployed to GitHub Pages
-
-
-
-## Presentation Requirements
-Use this project presentation template to address the following:
-
-
-Elevator pitch: a one minute description of your application
-
-
-Concept: What is your user story? What was your motivation for development?
-
-
-Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-
-Demo: Show your stuff!
-
-
-Directions for Future Development
-
-
-Links to the deployed application and the GitHub repository
-
-
-
-## Grading Metrics
-
-
-
-Metric
-Weight
-
-
-
-
-Concept
-10%
-
-
-Design
-20%
-
-
-Functionality
-30%
-
-
-Collaboration
-30%
-
-
-Presentation
-10%
+# Contributors 
+Tom- JavaScript
+Grant-Java Script
+Ruth- Css/Stylinhg
+HTML/Text- Liban
+HTML/Text- Liban
