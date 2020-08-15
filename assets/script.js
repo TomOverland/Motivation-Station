@@ -20,8 +20,8 @@ $(document).ready(function () {
     $("#harvard-img").html("<img src=" + harvardImg + "></img>");
   });
 
-  // ------------ GENERATE NEW QUOTE BUTTON -------------------
-  $("#btn").on("click", function (event) {
+   // ------------ GENERATE NEW QUOTE BUTTON -------------------
+   $("#btn").on("click", function (event) {
     event.preventDefault();
     // --------------- Random Quotes from QuoteGarden API ----------------
     $.ajax({
@@ -47,7 +47,6 @@ $(document).ready(function () {
       localStorage.setItem("savedQuote", JSON.stringify(savedQuoteArr));
     });
   });
-
   // ------------------- ADD TO FAVORITES BUTTON -----------------------
   $("#save-btn").on("click", function (event) {
     event.preventDefault();
@@ -82,27 +81,25 @@ $(document).ready(function () {
     }
     saveQuotes();
   });
+ // ----------Create Twitter Link-----------
+ function makeTweetableUrl() {
+  const tweetableText = "https://twitter.com/intent/tweet?text=" + tweet;
+  return tweetableText;
+}
 
-  // ----------Create Twitter Link-----------
-  function makeTweetableUrl() {
-    const tweetableText = "https://twitter.com/intent/tweet?text=" + tweet;
-    return tweetableText;
-  }
+//----------Creates Twitter Popup Window----------
+function onClickToTweet(e) {
+  e.preventDefault();
 
-  //----------Creates Twitter Popup Window----------
-  function onClickToTweet(e) {
-    e.preventDefault();
-
-    window.open(
-      e.target.getAttribute("href"),
-      "twitterwindow",
-      "height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
-    );
-  }
+  window.open(
+    e.target.getAttribute("href"),
+    "twitterwindow",
+    "height=450, width=550, toolbar=0, location=0, menubar=0, directories=0, scrollbars=0"
+  );
+}
 });
-
 //---------------- RESET BUTTON ---------------------------
 $("#reset-btn").on("click", function (event) {
-  event.preventDefault();
-  $("#list").empty();
+event.preventDefault();
+$("#list").empty();
 });
