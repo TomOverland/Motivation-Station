@@ -24,9 +24,9 @@ JavaScript
 Foundation - Framework used to structure our HTML.  
 CSS - Used in tandem with Foundation to style our project  
 jQuery - Used to traverse the DOM and handle events.  
-QuoteGarden API - Used to generate random motivational quotes.  
-Harvard Museum of Art API - Used to generate random inspiring pictures.  
-Twitter API - Used to allow users to tweet their content directly to their twitter feeds.  
+QuoteGarden API(Server Side) - Used to generate random motivational quotes.  
+Harvard Art Museum API(Server Side) - Used to generate random inspiring pictures.  
+Twitter API(Third Party) - Used to allow users to tweet their content directly to their twitter feeds.   
 
 ## Installation
 
